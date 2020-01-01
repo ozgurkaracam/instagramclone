@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -11,6 +15,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
@@ -34,7 +44,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data=$request->validate([
+            'title' => 'required',
+            'description'=>'required',
+            'image' => 'required'
+        ]);
+        Auth::user()->posts()->create($data);
+            //TODO 1 burda kaldık.
+//        $request['image']->store('uploads','public');
+//        Storage::disk('local')->put()
+//        return redirect('/profile/'.Auth::user()->id);
+        Storage::disk('public')->put('deneme.txt','uploads');
     }
 
     /**
