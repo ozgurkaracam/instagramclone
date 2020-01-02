@@ -7,7 +7,7 @@
             </div>
 
         </div>
-        <form action="{{ route('p.store') }}" method="post">
+        <form action="{{ route('p.store') }}" enctype="multipart/form-data" method="post">
             @csrf
             <div class="row">
                 <div class="col-8 offset-2">
@@ -18,11 +18,9 @@
                             <input id="title" name="title" type="text" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" autocomplete="title" autofocus>
 
                             @error('title')
-                            <div class="row">
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                            </div>
                             @enderror
                         </div>
                     </div>
@@ -37,11 +35,9 @@
                             <input id="description" name="description" type="text" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}" autocomplete="description" autofocus>
 
                             @error('description')
-                            <div class="row">
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                            </div>
                             @enderror
                         </div>
                     </div>
@@ -52,11 +48,9 @@
                 <label for="image" class="col-md-4 col-form-label">Post Image</label>
                 <input type="file" class="form-control-file"  class="@error('image') is-invalid @enderror" id="image" name="image">
                 @error('image')
-                    <div class="row">
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                    </div>
 
                 @enderror
                 </div>

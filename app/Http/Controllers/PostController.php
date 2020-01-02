@@ -44,18 +44,23 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $data=$request->validate([
             'title' => 'required',
             'description'=>'required',
-            'image' => 'required'
+            'image' => 'required|image'
         ]);
-        Auth::user()->posts()->create($data);
-            //TODO 1 burda kaldık.
-//        $request['image']->store('uploads','public');
+        $image= $request->image->hashName();
+        Auth::user()->posts()->create([
+            'title'=>$data['title'],
+            'description'=>$data['description'],
+            'image'=>$image
+        ]);
+        $request['image']->store('uploads','public');
+
+        return redirect()->route('profile.show',Auth::user()->id);
 //        Storage::disk('local')->put()
 //        return redirect('/profile/'.Auth::user()->id);
-        Storage::disk('public')->put('deneme.txt','uploads');
+//        Storage::disk('local')->put($request->file('image'),'uploads');
     }
 
     /**

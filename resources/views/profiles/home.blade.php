@@ -15,9 +15,12 @@
                     @endif
             </div>
             <div class="d-flex">
-                <div class="pr-3"><strong>153 </strong>post</div>
+                <div class="pr-3"><strong>{{ $user->posts->count() }} </strong>post</div>
                 <div class="pr-3"><strong>23k </strong>followers</div>
                 <div><strong>212</strong> following</div>
+            </div>
+            <div>
+                <a href="#">Edit Profile</a>
             </div>
             <div class="pt-4 font-weight-bold">{{ $user->name }}</div>
             <div>{{ $user->profile->description }}</div>
@@ -25,15 +28,17 @@
         </div>
     </div>
     <div class="row pt-4">
-        <div class="col-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTZc-iu1LkhxInaANRO7Wv2eHVp_IEDIO5XmoCeKujDotbXfLkV" class="w-75" alt="">
+        @foreach($user->posts as $post )
+        <div class="col-4 pb-3">
+            <img src="/storage/uploads/{{ $post->image }}" class="w-75" alt="">
         </div>
-        <div class="col-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTZc-iu1LkhxInaANRO7Wv2eHVp_IEDIO5XmoCeKujDotbXfLkV" class="w-75" alt="">
-        </div>
-        <div class="col-4">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTZc-iu1LkhxInaANRO7Wv2eHVp_IEDIO5XmoCeKujDotbXfLkV" class="w-75" alt="">
-        </div>
+        @endforeach
+{{--        <div class="col-4">--}}
+{{--            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTZc-iu1LkhxInaANRO7Wv2eHVp_IEDIO5XmoCeKujDotbXfLkV" class="w-75" alt="">--}}
+{{--        </div>--}}
+{{--        <div class="col-4">--}}
+{{--            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTZc-iu1LkhxInaANRO7Wv2eHVp_IEDIO5XmoCeKujDotbXfLkV" class="w-75" alt="">--}}
+{{--        </div>--}}
     </div>
 </div>
 @endsection
