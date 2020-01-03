@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Storage;
+use Image;
 
 class ProfilesController extends Controller
 {
@@ -58,7 +63,9 @@ class ProfilesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=User::findOrFail($id);
+        $profile=$user->profile;
+        return view('profiles.edit',compact('profile'));
     }
 
     /**
@@ -70,7 +77,37 @@ class ProfilesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->image) {
+            $data=$request->validate([
+                'title'=>'required',
+                'url' => 'required|url',
+                'description' => 'required',
+                'image'=> 'required|image'
+            ]);
+            $profile= Profile::findOrFail($id);
+            $profile->title=$data['title'];
+            $profile->url=$data['url'];
+            $profile->image=$data['image']->hashName();
+            $profile->description=$data['description'];
+            $request['image']->store('uploads','public');
+//            $path=$request->file('image');
+//            $image=Image::make($path)->resize(800,800);
+//            $link = Storage::put('storage/uploads',$image);
+        }
+        else{
+            $data=$request->validate([
+                'title'=>'required',
+                'url' => 'required|url',
+                'description' => 'required'
+            ]);
+            $profile= Profile::findOrFail($id);
+            $profile->title=$data['title'];
+            $profile->url=$data['url'];
+            $profile->description=$data['description'];
+        }
+
+        $profile->save();
+        return redirect()->route('profile.show',$profile->user->id);
     }
 
     /**

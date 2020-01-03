@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3 p-5">
-            <img src="https://instagram.fesb3-2.fna.fbcdn.net/v/t51.2885-19/s320x320/66185921_2361364614120601_5895999020819546112_n.jpg?_nc_ht=instagram.fesb3-2.fna.fbcdn.net&_nc_ohc=F-5tuwV13_wAX_TY_D9&oh=795a61265fad95fdbbd10a88e342f0c6&oe=5EB42A9A" class="rounded-circle" style="max-height: 200px" alt="">
+            <img src="{{ $user->profile->image!='' ? '/storage/uploads/'.$user->profile->image : 'https://instagram.fesb3-2.fna.fbcdn.net/v/t51.2885-19/s320x320/66185921_2361364614120601_5895999020819546112_n.jpg?_nc_ht=instagram.fesb3-2.fna.fbcdn.net&_nc_ohc=F-5tuwV13_wAX_TY_D9&oh=795a61265fad95fdbbd10a88e342f0c6&oe=5EB42A9A' }}" class="rounded-circle img-fluid"  alt="">
         </div>
         <div class="col-md-9 pt-5 pl-6">
             <div class="d-flex justify-content-between align-items-baseline"><h1>{{ $user->username }}</h1>
@@ -20,7 +20,7 @@
                 <div><strong>212</strong> following</div>
             </div>
             <div>
-                <a href="#">Edit Profile</a>
+                <a href="{{ route('profile.edit',$user->id) }}">Edit Profile</a>
             </div>
             <div class="pt-4 font-weight-bold">{{ $user->name }}</div>
             <div>{{ $user->profile->description }}</div>
