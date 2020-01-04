@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('/profile/{user}/follow','FollowController@follow')->name('follow');
+Route::post('/profile/{user}/unfollow','FollowController@unfollow')->name('unfollow');
 Route::resource('p','PostController');
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::resource('profile','ProfilesController');

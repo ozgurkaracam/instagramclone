@@ -11,13 +11,13 @@
                 @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->username==$user->username)
                     <a href="{{ route('p.create') }}">Add New Post</a>
                 @else
-                    <a href="#" class="btn btn-primary">Follow This User</a>
+                    <follow-button v-bind:following="{{ \Illuminate\Support\Facades\Auth::user()->id }}" v-bind:follower="{{ $user->id }}"></follow-button>
                     @endif
             </div>
             <div class="d-flex">
                 <div class="pr-3"><strong>{{ $user->posts->count() }} </strong>post</div>
                 <div class="pr-3"><strong>{{ $user->followers->count() }} </strong>followers</div>
-                <div><strong>{{ $user->following->count() }}</strong> followingq</div>
+                <div><strong>{{ $user->following->count() }}</strong> following</div>
             </div>
             <div>
                 <a href="{{ route('profile.edit',$user->id) }}">Edit Profile</a>

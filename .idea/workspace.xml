@@ -3,8 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="4a8d3dba-3c62-4bea-8679-328830ca9f49" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/FollowButton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/profiles/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profiles/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +188,7 @@
       <workItem from="1577903698632" duration="4063000" />
       <workItem from="1577969188249" duration="54000" />
       <workItem from="1577969255636" duration="2149000" />
-      <workItem from="1578058664981" duration="11231000" />
+      <workItem from="1578058664981" duration="15522000" />
     </task>
     <servers />
   </component>
@@ -218,9 +224,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="809" y="190" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1578138785756" />
-    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1578138838129">
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1578142934367">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1578138838129" />
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1578142934367" />
   </component>
 </project>
