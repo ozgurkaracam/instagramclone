@@ -11,8 +11,9 @@
                 @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->username==$user->username)
                     <a href="{{ route('p.create') }}">Add New Post</a>
                 @else
-                    <follow-button status="{{ $user->followers->contains(\Illuminate\Support\Facades\Auth::user()) }}" following="{{ \Illuminate\Support\Facades\Auth::user()->id }}" follower="{{ $user->id }}"></follow-button>
-{{--                    TODO 2 burada kaldık. --}}
+
+                    <follow-button status="{{ $user->followers->contains(\Illuminate\Support\Facades\Auth::user()) }}" follower="{{ $user->id }}"></follow-button>
+
                     @endif
             </div>
             <div class="d-flex">
@@ -20,9 +21,11 @@
                 <div class="pr-3"><strong>{{ $user->followers->count() }} </strong>followers</div>
                 <div><strong>{{ $user->following->count() }}</strong> following</div>
             </div>
+            @can('update',$user->profile)
             <div>
                 <a href="{{ route('profile.edit',$user->id) }}">Edit Profile</a>
             </div>
+            @endcan
             <div class="pt-4 font-weight-bold">{{ $user->profile->title }}</div>
             <div>{{ $user->profile->description }}</div>
             <div><a href="{{ $user->profile->url }}" class="font-weight-bold">{{ $user->profile->url }}</a></div>
