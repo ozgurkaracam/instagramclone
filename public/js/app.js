@@ -1848,29 +1848,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      text: "Follow This User",
-      status: false,
-      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      text: "Follow This User" // status:false,
+
     };
   },
-  props: ['following', 'follower', 'csrf'],
+  props: ['following', 'follower', 'status'],
   methods: {
-    getText: function getText() {
-      return this.status ? "Unfollow" : "Follow";
-    },
     toggle: function toggle() {
+      var _this = this;
+
       if (this.status == false) {
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('http://localhost:8000/profile/' + this.follower + '/follow', this.following).then(function (res) {
-          return console.log(res);
+          _this.status = !_this.status;
+          console.log(res);
+        })["catch"](function (err) {
+          return console.log(err);
+        });
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('http://localhost:8000/profile/' + this.follower + '/unfollow', this.following).then(function (res) {
+          _this.status = !_this.status;
+          console.log(res);
         })["catch"](function (err) {
           return console.log(err);
         });
       }
-
-      this.status = !this.status;
     }
   },
-  name: 'FollowButton'
+  name: 'FollowButton',
+  computed: {
+    getText: function getText() {
+      return this.status == true ? "Unfollow" : "Follow";
+    }
+  }
 });
 
 /***/ }),
@@ -37274,7 +37283,7 @@ var render = function() {
       attrs: { href: "#" },
       on: { click: _vm.toggle }
     },
-    [_vm._v(_vm._s(_vm.getText()))]
+    [_vm._v(_vm._s(_vm.getText))]
   )
 }
 var staticRenderFns = []

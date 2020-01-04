@@ -11,7 +11,8 @@
                 @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->username==$user->username)
                     <a href="{{ route('p.create') }}">Add New Post</a>
                 @else
-                    <follow-button v-bind:following="{{ \Illuminate\Support\Facades\Auth::user()->id }}" v-bind:follower="{{ $user->id }}"></follow-button>
+                    <follow-button status="{{ $user->followers->contains(\Illuminate\Support\Facades\Auth::user()) }}" following="{{ \Illuminate\Support\Facades\Auth::user()->id }}" follower="{{ $user->id }}"></follow-button>
+{{--                    TODO 2 burada kaldık. --}}
                     @endif
             </div>
             <div class="d-flex">

@@ -1,5 +1,5 @@
 <template>
-    <a href="#" class="btn btn-primary" v-on:click="toggle">{{ getText() }}</a>
+    <a href="#" class="btn btn-primary" v-on:click="toggle">{{ getText }}</a>
 </template>
 
 <script>
@@ -8,25 +8,39 @@
         data(){
             return {
                 text:"Follow This User",
-                status:false,
-                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                // status:false,
             }
         },
-        props:['following','follower','csrf'],
+        props:['following','follower','status'],
         methods:{
-          getText(){
-              return this.status ? "Unfollow" : "Follow";
-          },
+
             toggle(){
               if(this.status==false){
                   axios.post('http://localhost:8000/profile/'+this.follower+'/follow',this.following)
-                  .then(res=> console.log(res))
+                  .then(res=> {
+                      this.status=!this.status;
+                      console.log(res);
+                  })
                   .catch(err=>console.log(err));
               }
-              this.status=!this.status;
+              else{
+                  axios.post('http://localhost:8000/profile/'+this.follower+'/unfollow',this.following)
+                      .then(res=> {
+                          this.status=!this.status;
+                          console.log(res);
+                      })
+                      .catch(err=>console.log(err));
+              }
+
             }
 
         },
-        name:'FollowButton'
+        name:'FollowButton',
+        computed:{
+            getText(){
+                return this.status==true ? "Unfollow" : "Follow";
+            },
+        }
+
     }
 </script>
