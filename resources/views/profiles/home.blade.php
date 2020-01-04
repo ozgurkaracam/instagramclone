@@ -11,13 +11,13 @@
                 @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->username==$user->username)
                     <a href="{{ route('p.create') }}">Add New Post</a>
                 @else
-                    <a href="#">Follow This User</a>
+                    <a href="#" class="btn btn-primary">Follow This User</a>
                     @endif
             </div>
             <div class="d-flex">
                 <div class="pr-3"><strong>{{ $user->posts->count() }} </strong>post</div>
-                <div class="pr-3"><strong>23k </strong>followers</div>
-                <div><strong>212</strong> following</div>
+                <div class="pr-3"><strong>{{ $user->followers->count() }} </strong>followers</div>
+                <div><strong>{{ $user->following->count() }}</strong> followingq</div>
             </div>
             <div>
                 <a href="{{ route('profile.edit',$user->id) }}">Edit Profile</a>
