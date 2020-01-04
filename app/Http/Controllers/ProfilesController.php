@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
@@ -19,8 +20,10 @@ class ProfilesController extends Controller
      */
     public function index($user)
     {
+        $user=User::findOrFail($user);
+        $posts=Post::where('user_id',$user->id)->orderBy('created_at','DESC')->paginate(6);
 
-        return view('profiles.home',[ 'user'=> User::find($user)]);
+        return view('profiles.home',compact('user','posts'));
     }
 
     /**
@@ -84,12 +87,16 @@ class ProfilesController extends Controller
                 'description' => 'required',
                 'image'=> 'required|image'
             ]);
+//            dd($data['image']->hashName());
             $profile= Profile::findOrFail($id);
             $profile->title=$data['title'];
             $profile->url=$data['url'];
             $profile->image=$data['image']->hashName();
             $profile->description=$data['description'];
             $request['image']->store('uploads','public');
+            $img=Image::make('storage/uploads/'.$data['image']->hashName());
+            $img->resize(800,800);
+            $img->save();
 //            $path=$request->file('image');
 //            $image=Image::make($path)->resize(800,800);
 //            $link = Storage::put('storage/uploads',$image);

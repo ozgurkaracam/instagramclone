@@ -32,8 +32,8 @@
                         <label for="description" class="col-md-4 col-form-label">Post Caption</label>
 
                         <div class="col-md-6">
-                            <input id="description" name="description" type="text" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}" autocomplete="description" autofocus>
-
+                            <textarea id="description" rows="10" name="description" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}" autocomplete="description" autofocus>
+                            </textarea>
                             @error('description')
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

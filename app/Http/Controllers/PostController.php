@@ -6,7 +6,7 @@ use App\Post;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Image;
 
 class PostController extends Controller
 {
@@ -56,7 +56,9 @@ class PostController extends Controller
             'image'=>$image
         ]);
         $request['image']->store('uploads','public');
-
+        $img=Image::make('storage/uploads/'.$image);
+        $img->resize(800,800);
+        $img->save();
         return redirect()->route('profile.show',Auth::user()->id);
 //        Storage::disk('local')->put()
 //        return redirect('/profile/'.Auth::user()->id);
@@ -69,9 +71,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($post)
     {
-        //
+        $post= Post::findOrFail($post);
+        return view('posts.detail',compact('post'));
     }
 
     /**

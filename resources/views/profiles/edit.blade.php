@@ -35,7 +35,7 @@
                                 <label for="url" class="text-right">Url</label>
                             </div>
                             <div class="col-md-10">
-                                <input type="text" name="url" id="url" value="{{ $profile->url }}" class="form-control">
+                                <input type="text" name="url" id="url" value="{{ old('url',$profile->url)  }}" class="form-control">
                                 @error('url')
                                     <span class="small text-danger">{{ $message }}</span>
                                 @enderror
