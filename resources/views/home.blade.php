@@ -5,7 +5,7 @@
             <div class="card mb-3">
                 <div class="col-md-6 offset-3">
                     <a href="{{ route('p.show',$post->id) }}">
-                        <img src="/storage/uploads/{{ $post->image }}" class="card-img-top img-fluid" alt="...">s
+                        <img src="/storage/uploads/{{ $post->image }}" class="card-img-top img-fluid" alt="...">
                     </a>
                 </div>
 
