@@ -69,4 +69,7 @@ class User extends Authenticatable
     public function followers(){
         return $this->belongsToMany($this,'followers','follower','following');
     }
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
 }

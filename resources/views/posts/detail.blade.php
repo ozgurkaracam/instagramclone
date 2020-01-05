@@ -15,6 +15,44 @@
                     <p class="font-weight-bold">{{ $post->title }}</p>
                     <p>{{ $post->description }}</p>
                 </div>
+
+
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-8 offset-2">
+                    @foreach($post->comments as $comment)
+                        <div class="card mt-4">
+
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <img src="/storage/uploads/{{ $comment->user->profile->profile_image }}" width="25px" class="rounded-circle" alt="">
+                                    <small>{{ $comment->user->username }}</small>
+                                    <small class="text-info">{{ $comment->created_at->diffForHumans() }}</small>
+                                </div>
+                                {{ $comment->body }}
+                            </div>
+                        </div>
+                        @endforeach
+
+{{--                    POST COMMENT--}}
+                    <form action="{{ route('comments.store',$post->id) }}" enctype="multipart/form-data" method="POST">
+                        {{ csrf_field() }}
+                        <div class="form-group col-md-12">
+                            <label for="comment" class="col-form-label">
+                                Comment
+                                <div class="">
+                                    <img src="/storage/uploads/{{ $post->user->profile->profile_image }}" width="25px" class="rounded-circle" alt="">
+                                    <small>{{ $post->user->username }}</small>
+                                </div>
+
+                            </label>
+
+                            <textarea name="body" id="body" class="form-control" cols="90" rows="10"></textarea>
+                            <button type="body" class="btn btn-success form-control mt-2" > SEND </button>
+                        </div>
+
+                    </form>
+                </div>
             </div>
 
         </div>
