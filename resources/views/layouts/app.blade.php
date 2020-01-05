@@ -24,7 +24,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex" href="{{ url('/') }}">
+                <a class="navbar-brand d-flex" href="{{ url('/home') }}">
                     <div><img src="/svg/instagram-seeklogo.com.svg" style="max-height: 20px; border-right: 1px solid;" class="pr-3" alt=""></div>
                     <div class="pl-3 pt-1">InstagramClone</div>
                 </a>
@@ -57,6 +57,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a href="{{ route('p.create') }}" class="dropdown-item">
+                                        Add Post
+                                    </a>
                                     <a href="{{ route('profile.show',\Illuminate\Support\Facades\Auth::user()->id) }}" class="dropdown-item">
                                         My Profile
                                     </a>

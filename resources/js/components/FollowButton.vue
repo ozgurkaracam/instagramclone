@@ -16,20 +16,28 @@
 
             toggle(){
               if(this.status==false){
-                  axios.post('http://localhost:8000/profile/'+this.follower+'/follow',this.following)
+                  axios.post('/'+this.follower+'/follow',this.following)
                   .then(res=> {
                       this.status=!this.status;
                       console.log(res);
                   })
-                  .catch(err=>console.log(err));
+                  .catch(err=>{
+                      if(err.response.status==401)
+                          window.location('/login');
+                      window.location('login');
+                  });
               }
               else{
-                  axios.post('http://localhost:8000/profile/'+this.follower+'/unfollow',this.following)
+                  axios.post('/'+this.follower+'/unfollow',this.following)
                       .then(res=> {
                           this.status=!this.status;
                           console.log(res);
                       })
-                      .catch(err=>console.log(err));
+                      .catch(err=>{
+                          if(err.response.status==401)
+                              window.location('/login');
+                          window.location('login');
+                      });
               }
 
 

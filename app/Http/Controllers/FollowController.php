@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class FollowController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     public function follow(Request $request,$user){
         $user = \App\User::find($user);
         $following=\App\User::find(Auth::user());

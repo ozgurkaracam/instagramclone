@@ -11,4 +11,8 @@ class Profile extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function getProfileImageAttribute(){
+        return $this->image ? $this->image : 'noprofile.jpg';
+    }
 }
