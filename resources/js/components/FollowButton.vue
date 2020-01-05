@@ -8,7 +8,7 @@
         data(){
             return {
                 text:"Follow This User",
-                // status:false,
+                status:false,
             }
         },
         props:['following','follower','status'],

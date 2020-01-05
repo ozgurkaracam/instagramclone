@@ -18,8 +18,8 @@
             </div>
             <div class="d-flex">
                 <div class="pr-3"><strong>{{ $user->posts->count() }} </strong>post</div>
-                <div class="pr-3"><strong>{{ $user->followers->count() }} </strong>followers</div>
-                <div><strong>{{ $user->following->count() }}</strong> following</div>
+                <div class="pr-3"><a href="{{ route('profile.followers',$user->id) }}"><strong>{{ $user->followers->count() }} </strong>followers</a></div>
+                <div><a href="{{ route('profile.following',$user->id) }}"><strong> {{ $user->following->count() }}</strong> following</a></div>
             </div>
             @can('update',$user->profile)
             <div>
@@ -52,4 +52,5 @@
         {{ $posts->links() }}
     </div>
 </div>
+
 @endsection
