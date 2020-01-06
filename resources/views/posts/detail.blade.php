@@ -4,6 +4,13 @@
             <div class="row pt-3">
                 <div class="col-md-6">
                     <img src="/storage/uploads/{{ $post->image }}" class="img-fluid" alt="">
+                    @can('delete',$post)
+                        <form action="{{ route('p.destroy',$post->id) }}" method="POST" class="mt-2">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button type="submit" class="btn btn-danger">DELETE THIS POST</button>
+                        </form>
+                        @endcan
                 </div>
                 <div class="col-md-6 pl-4">
                         <a href="{{ route('profile.show',$post->user->id) }}" class="d-flex align-items-center">

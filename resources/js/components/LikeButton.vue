@@ -2,11 +2,11 @@
     <div class="d-flex align-items-top">
         <div class="">
             <b>{{ likecount }}</b>
-            <i class="far fa-heart fa-2x" v-on:click="likepost" v-bind:class="{ 'fas' : status==true}"></i>
+            <i class="far fa-heart fa-2x" v-on:click="likepost" style="cursor: pointer" v-bind:class="{ 'fas' : status==true}"></i>
         </div>
         <div class="ml-3">
             <b>{{ commentcount }}</b>
-            <i class="far fa-comment fa-2x" click="window.location('/')"></i>
+            <i class="far fa-comment fa-2x" style="cursor: pointer" click="window.location('/')"></i>
         </div>
     </div>
 </template>

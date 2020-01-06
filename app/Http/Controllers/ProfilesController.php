@@ -66,7 +66,7 @@ class ProfilesController extends Controller
      */
     public function edit($id)
     {
-
+        $this->authorize('update',Profile::find($id));
         $user=User::findOrFail($id);
         $profile=$user->profile;
         return view('profiles.edit',compact('profile'));
@@ -81,7 +81,7 @@ class ProfilesController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        $this->authorize($id);
+        $this->authorize('update',Profile::find($id));
         if($request->image) {
             $data=$request->validate([
                 'title'=>'required',

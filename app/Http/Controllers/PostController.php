@@ -114,11 +114,13 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $idp
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $this->authorize('delete',Post::find($id));
+        Post::find($id)->delete();
+        return redirect()->route('home.index');
     }
 }

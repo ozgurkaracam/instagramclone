@@ -40494,6 +40494,7 @@ var render = function() {
       _c("i", {
         staticClass: "far fa-heart fa-2x",
         class: { fas: _vm.status == true },
+        staticStyle: { cursor: "pointer" },
         on: { click: _vm.likepost }
       })
     ]),
@@ -40503,6 +40504,7 @@ var render = function() {
       _vm._v(" "),
       _c("i", {
         staticClass: "far fa-comment fa-2x",
+        staticStyle: { cursor: "pointer" },
         attrs: { click: "window.location('/')" }
       })
     ])
