@@ -16,7 +16,7 @@
 
             toggle(){
               if(this.status==false){
-                  axios.post('/'+this.follower+'/follow',this.following)
+                  axios.post('/profile/'+this.follower+'/follow',this.following)
                   .then(res=> {
                       this.status=!this.status;
                       console.log(res);
@@ -28,7 +28,7 @@
                   });
               }
               else{
-                  axios.post('/'+this.follower+'/unfollow',this.following)
+                  axios.post('/profile/'+this.follower+'/unfollow',this.following)
                       .then(res=> {
                           this.status=!this.status;
                           console.log(res);

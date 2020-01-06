@@ -14,6 +14,12 @@
                     <small> {{ $post->created_at }}</small>
                     <p class="font-weight-bold">{{ $post->title }}</p>
                     <p>{{ $post->description }}</p>
+                    <like-buttons likecount="{{ $post->likedusers->count() }}"
+                                  userid="{{ \Illuminate\Support\Facades\Auth::user()->id }}"
+                                  status="{{ $post->likedusers->contains(\Illuminate\Support\Facades\Auth::user())  }}" postid="{{ $post->id }}"
+                                  commentcount="{{ $post->comments->count() }}">
+
+                    </like-buttons>
                 </div>
 
 

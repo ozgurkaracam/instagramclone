@@ -3,13 +3,14 @@
     <div class="container">
         @foreach($posts as $post)
             <div class="card mb-3">
-                <div class="col-md-6 offset-3">
-                    <a href="{{ route('p.show',$post->id) }}">
-                        <img src="/storage/uploads/{{ $post->image }}" class="card-img-top img-fluid" alt="...">
-                    </a>
-                </div>
+
 
                 <div class="card-body">
+                    <div class="col-md-6 offset-3">
+                        <a href="{{ route('p.show',$post->id) }}">
+                            <img src="/storage/uploads/{{ $post->image }}" class="card-img-top img-fluid" alt="...">
+                        </a>
+                    </div>
                     <div class="d-flex">
                         <a href="{{ route('profile.show',$post->user->id) }}" class="d-flex">
                             <div><img src="/storage/uploads/{{ $post->user->profile->profile_image }}" style="max-height: 25px"  class="img-fluid rounded-circle mr-2" alt=""></div>
@@ -19,6 +20,12 @@
                     </div>
                     <p class="card-text">{{ $post->description }}</p>
                     <p class="card-text"><small class="text-muted">{{ $post->diff_date }}</small></p>
+                    <div>
+                        <like-buttons likecount="{{ $post->likedusers->count() }}"
+                                      userid="{{ \Illuminate\Support\Facades\Auth::user()->id }}"
+                                      status="{{ $post->likedusers->contains(\Illuminate\Support\Facades\Auth::user())  }}" postid="{{ $post->id }}"
+                                      commentcount="{{ $post->comments->count() }}">
+                    </div>
                 </div>
             </div>
 

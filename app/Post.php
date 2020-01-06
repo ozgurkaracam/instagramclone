@@ -17,4 +17,7 @@ class Post extends Model
     public function getDiffDateAttribute(){
         return $this->created_at->diffForHumans();
     }
+    public function likedusers(){
+        return $this->belongsToMany(User::class,'likes');
+    }
 }

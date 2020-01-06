@@ -26,6 +26,17 @@ class PostController extends Controller
         //
     }
 
+    public function likepost($post){
+        $post=Post::find($post);
+        $post->likedusers()->attach(Auth::user());
+        return 'OK';
+    }
+    public function unlikepost($post){
+        $post=Post::find($post);
+        $post->likedusers()->detach(Auth::user());
+        return 'OK';
+    }
+
     /**
      * Show the form for creating a new resource.
      *

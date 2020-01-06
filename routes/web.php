@@ -22,6 +22,8 @@ Route::get('/profile/{user}/following','FollowController@following')->name('prof
 Route::post('/profile/{user}/follow','FollowController@follow')->name('follow');
 Route::post('/profile/{user}/unfollow','FollowController@unfollow')->name('unfollow');
 Route::get('p/{id}/comments','CommentController@show')->name('comments');
+Route::post('p/{id}/like','PostController@likepost')->name('likepost');
+Route::post('p/{id}/unlike','PostController@unlikepost')->name('unlikepost');
 Route::post('p/{id}/comments','CommentController@store')->name('comments.store');
 Route::resource('p','PostController');
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
